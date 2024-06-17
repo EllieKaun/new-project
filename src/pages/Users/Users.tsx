@@ -1,6 +1,8 @@
 import { useEffect, useState } from  "react"
 import { fetcher } from  "../../helpers/fetcher"
-
+import { Container } from "../../components/UI"
+import { UserCard } from "../../components/UI/UserCard/UserCard"
+import classes from './Users.module.scss'
 
 interface UsersData{
      id: number,
@@ -31,13 +33,24 @@ export const Users = () => {
 
     const [users, setUsers] = useState<[] | UsersData[]>([])
 
+
+    const handleFetch = async () => {
+        const result = await fetcher('users')
+        setUsers(result)
+    }
+
     useEffect(() => {
-        console.log(fetcher('users'))
+        handleFetch()
     }, [])
 
     return(
-        <>
-            Users
-        </>
+        <Container>
+            <p>Users</p>
+            <div className={classes.wrapper}>
+                {users.map((item) => (
+                    <UserCard userData={item} key={item.id}/>
+                ))}
+            </div>
+        </Container>
     )
 }
