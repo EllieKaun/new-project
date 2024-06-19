@@ -6,6 +6,8 @@ import homeIcon from '../../../assets/home.svg'
 import { CustomModal } from "../../UI/CustomModal/CustomModal"
 import { useState } from "react"
 import { Login } from "../Login/Login"
+import { useNavigate } from "react-router-dom"
+
 
 const navBar = [
     {
@@ -43,11 +45,7 @@ export const Header = () => {
 
     const user = localStorage.getItem('user')
 
-
-    const handleExit = () => {
-        localStorage.removeItem('user')
-        window.location.reload()
-    }
+    const navigate = useNavigate()
 
     return (
         <>
@@ -62,7 +60,7 @@ export const Header = () => {
                     {
                     !user ? 
                         <Button variant="contained" onClick={() => handleOpen()}>Sign up</Button>
-                        : <Button onClick={() => handleExit()}>Exit</Button>
+                        : <Button onClick={() => navigate("/profile")}>Profile</Button>
                     }
                 </nav>
             </Container>
