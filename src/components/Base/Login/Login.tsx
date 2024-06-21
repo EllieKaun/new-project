@@ -64,17 +64,24 @@ export const Login = () => {
         <div className={classes.wrapper}>
             <p>Login</p>
             <div className={classes.inputWrapper}> 
-                <TextField onChange={(e) => {
-                    handleUpdLoginData('userName', 'value', e.target.value)
-                    handleUpdLoginData('userName', 'error', false)
-                }} error={loginData.userName.error} variant="filled" label="username"/>
-                {loginData.userName.error ? <p>Введите больше 4 и меньше 16 символов</p> : <></>}
-                <TextField 
-                onChange={(e) => {
-                    handleUpdLoginData('phoneNumber', 'value', e.target.value)
-                    handleUpdLoginData('phoneNumber', 'error', false)
-                }} error={loginData.phoneNumber.error} variant="filled" label="phone number"/>
-                {loginData.phoneNumber.error ? <p>Введите телефон в формате +996 XXX XX-XX-XX</p> : <></>}
+                <div>
+                    <TextField 
+                    className={classes.input}
+                    onChange={(e) => {
+                        handleUpdLoginData('userName', 'value', e.target.value)
+                        handleUpdLoginData('userName', 'error', false)
+                    }} error={loginData.userName.error} variant="filled" label="username"/>
+                    {loginData.userName.error ? <p className={classes.errorText}>Введите больше 4 и меньше 16 символов</p> : <></>}
+                </div>
+                <div>
+                    <TextField 
+                    className={classes.input}
+                    onChange={(e) => {
+                        handleUpdLoginData('phoneNumber', 'value', e.target.value)
+                        handleUpdLoginData('phoneNumber', 'error', false)
+                    }} error={loginData.phoneNumber.error} variant="filled" label="phone number"/>
+                    {loginData.phoneNumber.error ? <p className={classes.errorText}>Введите телефон в формате +996 XXX XX-XX-XX</p> : <></>}
+                </div>
             </div>
             <Button variant="contained" onClick={() => handleAddUser()}>Login</Button>
         </div>
