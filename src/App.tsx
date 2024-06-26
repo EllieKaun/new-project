@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"
-import { Main, Users, NotFound, Profile } from "./pages"
-import { Header } from "./components/Base"
+import { Main, Users, NotFound, Profile, Photos, Albums } from "./pages"
+import { Footer, Header } from "./components/Base"
 
 function App() {
 
@@ -12,9 +12,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />}/>
           <Route path="users" element={<Users/>}/>
+          <Route path="photos" element={<Photos/>}/>
+          <Route path="albums" element={<Albums/>}/>
           {user ? <Route path="profile" element={<Profile/>}/> : <></>}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer/>
       </>
   )
 }

@@ -3,6 +3,7 @@ import { fetcher } from  "../../helpers/fetcher"
 import { Container } from "../../components/UI"
 import { UserCard } from "../../components/UI/UserCard/UserCard"
 import classes from './Users.module.scss'
+import { Skeleton } from "@mui/material"
 
 interface UsersData{
      id: number,
@@ -43,14 +44,21 @@ export const Users = () => {
         handleFetch()
     }, [])
 
+    
     return(
         <Container>
-            <p>Users</p>
-            <div className={classes.wrapper}>
-                {users.map((item) => (
-                    <UserCard userData={item} key={item.id}/>
-                ))}
-            </div>
+            <>
+                <p>Users</p>
+                <div className={classes.wrapper}>
+                    {users.length > 0 ?
+                        users?.map((item) => (
+                            <UserCard userData={item} key={item.id}/>
+                        )) : Array.from({length: 20}).map(() => (
+                            <Skeleton variant="rounded" width={170} height={220}/>
+                        ))
+                    }
+                </div>
+            </>
         </Container>
     )
 }

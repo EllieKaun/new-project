@@ -1,4 +1,4 @@
 import { Container } from "./Container/Container";
+import { Loader } from "./Loader/Loader";
 
-
-export { Container };
+export { Container, Loader };

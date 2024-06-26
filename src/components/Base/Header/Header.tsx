@@ -7,30 +7,9 @@ import { CustomModal } from "../../UI/CustomModal/CustomModal"
 import { useState } from "react"
 import { Login } from "../Login/Login"
 import { useNavigate } from "react-router-dom"
+import { navBar } from "../../../common/constans"
 
 
-const navBar = [
-    {
-        title: 'posts',
-        url: '/posts'
-    },
-    {
-        title: 'comments',
-        url: '/comments'
-    },
-    {
-        title: 'albums',
-        url: '/alboms'
-    },
-    {
-        title: 'photos',
-        url: '/photos'
-    },
-    {
-        title: 'users',
-        url: '/users'
-    }
-]
 
 export const Header = () => {
 
